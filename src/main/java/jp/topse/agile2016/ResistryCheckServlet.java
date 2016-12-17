@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,22 +24,23 @@ public class ResistryCheckServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String weight_string = request.getParameter("weight");
     	
-    	int weight = -1;
     	String error_message = "";
-    	try {
-    		weight = checkWeight(weight_string);
-    	} catch(Exception e) {
-    		error_message = "入力が不正です。";
+    	if(checkWeight(weight_string)){
+    		// データベース登録
     	}
-    	
+    	else{
+    		error_message = "入力が不正です。";
+    	}    	
     	request.setAttribute("error_message", error_message);
-    	request.setAttribute("weight", String.valueOf(weight));
+    	request.setAttribute("weight", weight_string);
     	
     	request.getRequestDispatcher("resistry_check.jsp").forward(request, response);
     }
     
-    private int checkWeight(String weight_string)
+    private boolean checkWeight(String weight_string)
     {
-    	return 60;
+    	Pattern p = Pattern.compile("^[1-9][0-9]{0,2}(\\.[0-9])?$");
+    	Matcher m = p.matcher(weight_string);
+    	return m.find();
     }
 }
