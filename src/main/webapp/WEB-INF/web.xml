@@ -7,9 +7,13 @@
         <servlet-name>TopServlet</servlet-name>
         <servlet-class>jp.topse.agile2016.TopServlet</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>ResistryServlet</servlet-name>
         <servlet-class>jp.topse.agile2016.ResistryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResistryCheckServlet</servlet-name>
+        <servlet-class>jp.topse.agile2016.ResistryCheckServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TopServlet</servlet-name>
@@ -18,5 +22,9 @@
     <servlet-mapping>
         <servlet-name>ResistryServlet</servlet-name>
         <url-pattern>/ResistryServlet</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>ResistryCheckServlet</servlet-name>
+        <url-pattern>/ResistryCheckServlet</url-pattern>
     </servlet-mapping>
 </web-app>
