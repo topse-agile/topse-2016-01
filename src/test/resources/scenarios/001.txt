@@ -11,7 +11,7 @@ Add Operation Works Well
     60.5    完了しました。
     60.51    入力が不正です。
     A        入力が不正です。
-    N/A      入力が不正です。
+    ${empty}      入力が不正です。
 
 *** Keywords ***
 Add Operation Workflow
