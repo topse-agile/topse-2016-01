@@ -37,7 +37,7 @@ public class ResistryCheckServlet extends HttpServlet {
     	request.getRequestDispatcher("resistry_check.jsp").forward(request, response);
     }
     
-    private boolean checkWeight(String weight_string)
+    boolean checkWeight(String weight_string)
     {
     	Pattern p = Pattern.compile("^[1-9][0-9]{0,2}(\\.[0-9])?$");
     	Matcher m = p.matcher(weight_string);

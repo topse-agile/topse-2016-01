@@ -7,17 +7,17 @@ ${BROWSER}        chrome
 *** Test Cases ***
 Add Operation Works Well
     [Template]    Add Operation Workflow
-    60    OK
-    60.5    OK
-    60.51    NG
-    A        NG
-    N/A      NG
+    60    完了しました。
+    60.5    完了しました。
+    60.51    入力が不正です。
+    A        入力が不正です。
+    N/A      入力が不正です。
 
 *** Keywords ***
 Add Operation Workflow
     [Arguments]    ${arg1}    ${expected}
     Open Application Page
-    ${result}=    Add In Application Page ${arg1}
+    ${result}=    Add In Application Page	${arg1}
     Should Be Equal    ${result}    ${expected}
     Close Application Page
 
