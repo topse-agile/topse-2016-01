@@ -1,0 +1,36 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Variables ***
+${BROWSER}        chrome 
+
+*** Test Cases ***
+Add Operation Works Well
+    [Template]    Add Operation Workflow
+    60    OK
+    60.5    OK
+    60.51    NG
+    A        NG
+    N/A      NG
+
+*** Keywords ***
+Add Operation Workflow
+    [Arguments]    ${arg1}    ${expected}
+    Open Application Page
+    ${result}=    Add In Application Page ${arg1}
+    Should Be Equal    ${result}    ${expected}
+    Close Application Page
+
+Open Application Page
+    Open Browser    http://localhost:9080/weight_recorder    ${BROWSER}
+    Click Link  登録
+
+Add In Application Page
+    [Arguments]    ${arg1}
+    Input Text    weight    ${arg1}
+    Submit Form
+    ${result}=    Get Text    result
+    [Return]    ${result}
+
+Close Application Page
+    Close Browser
