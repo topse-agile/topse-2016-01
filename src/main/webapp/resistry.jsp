@@ -18,6 +18,7 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 %>
 <form method="POST" action="ResistryCheckServlet">
 <span id="date"><%= formatter.format(date) %></span> : 
+<input type="hidden" name="date" value="<%= formatter.format(date) %>"/>
 <input type="text" name="weight" /> kg
 <input type="submit" name="submit" value="登録" />
 </form>
